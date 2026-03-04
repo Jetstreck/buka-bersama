@@ -235,8 +235,6 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
                             const r1 = 143, r2 = 134;
                             const cx = 190 + r1 * Math.cos(rad);
                             const cy = 165 + r1 * Math.sin(rad);
-                            const dx = 5 * Math.cos(rad);
-                            const dy = 5 * Math.sin(rad);
                             return (
                                 <rect
                                     key={i}

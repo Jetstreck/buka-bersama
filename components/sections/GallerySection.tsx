@@ -1,13 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/SectionWrapper';
 
 const images = [
-    { id: 1, title: 'Kebersamaan', bg: 'rgba(198,167,94,0.12)', accent: '#C6A75E' },
-    { id: 2, title: 'Silaturahmi', bg: 'rgba(31,77,58,0.1)', accent: '#1F4D3A' },
-    { id: 3, title: 'Kehangatan', bg: 'rgba(198,167,94,0.1)', accent: '#C6A75E' },
-    { id: 4, title: 'Keberkahan', bg: 'rgba(31,77,58,0.08)', accent: '#1F4D3A' },
+    { id: 1, src: '/images/1.png', title: 'Kebersamaan' },
+    { id: 2, src: '/images/4.png', title: 'Silaturahmi' },
+    { id: 3, src: '/images/3.png', title: 'Kehangatan' },
+    { id: 4, src: '/images/2.png', title: 'Keberkahan' },
 ];
 
 export function GallerySection() {
@@ -37,14 +38,13 @@ export function GallerySection() {
                             border: '1px solid rgba(198,167,94,0.3)',
                             boxShadow: '0 4px 20px rgba(198,167,94,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
                             background: '#FAF8F3',
-                            transition: 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
                         }}
                         whileHover={{
                             y: -6,
                             boxShadow: '0 16px 48px rgba(198,167,94,0.22), inset 0 1px 0 rgba(255,255,255,0.9)',
                         }}
                     >
-                        {/* Hover — gold inner border */}
+                        {/* Gold inner border on hover */}
                         <motion.div
                             className="absolute inset-0 rounded-2xl z-20 pointer-events-none"
                             initial={{ opacity: 0 }}
@@ -53,32 +53,30 @@ export function GallerySection() {
                             style={{ border: '4px solid rgba(198,167,94,0.35)', boxShadow: 'inset 0 0 20px rgba(198,167,94,0.08)' }}
                         />
 
-                        {/* Image placeholder */}
+                        {/* Real photo with zoom on hover */}
                         <motion.div
-                            className="absolute inset-0 flex items-center justify-center"
-                            style={{ background: image.bg }}
+                            className="absolute inset-0"
                             whileHover={{ scale: 1.06 }}
                             transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
                         >
-                            {/* Subtle Islamic star pattern */}
-                            <div className="absolute inset-0 pattern-overlay opacity-30" />
-                            <span
-                                className="font-serif text-3xl z-10"
-                                style={{ color: image.accent, opacity: 0.25 }}
-                            >
-                                ✦
-                            </span>
+                            <Image
+                                src={image.src}
+                                alt={image.title}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            />
                         </motion.div>
 
-                        {/* Gradient bottom overlay */}
+                        {/* Gradient overlay — bottom fade */}
                         <div
                             className="absolute inset-0 z-10"
                             style={{
-                                background: 'linear-gradient(to top, rgba(246,241,232,0.95) 0%, transparent 55%)',
+                                background: 'linear-gradient(to top, rgba(44,44,44,0.72) 0%, transparent 55%)',
                             }}
                         />
 
-                        {/* Text */}
+                        {/* Title text */}
                         <div className="absolute bottom-0 left-0 w-full p-6 z-30">
                             <motion.div
                                 initial={{ y: 8 }}
@@ -87,13 +85,13 @@ export function GallerySection() {
                             >
                                 <h3
                                     className="font-serif text-lg mb-2"
-                                    style={{ color: '#2C2C2C' }}
+                                    style={{ color: '#F6F1E8' }}
                                 >
                                     {image.title}
                                 </h3>
                                 <motion.div
                                     className="h-px"
-                                    style={{ background: '#C6A75E', opacity: 0.7 }}
+                                    style={{ background: '#C6A75E', opacity: 0.85 }}
                                     initial={{ width: 0 }}
                                     whileHover={{ width: 40 }}
                                     transition={{ duration: 0.4, ease: 'easeOut' }}

@@ -197,7 +197,7 @@ export function HeroSection() {
                                 Dresscode
                             </p>
                             <p className="font-serif text-base" style={{ color: '#2C2C2C' }}>
-                                Modest Elegant · White &amp; Emerald
+                                Bebas · Santai &amp; Nyaman
                             </p>
                         </div>
                     </Card>
