@@ -34,7 +34,7 @@ export function GallerySection() {
                         transition={{ duration: 0.7, delay: i * 0.12, ease: [0.25, 1, 0.5, 1] }}
                         className="group relative rounded-2xl overflow-hidden cursor-pointer"
                         style={{
-                            height: 320,
+                            height: 'clamp(220px, 55vw, 320px)',
                             border: '1px solid rgba(198,167,94,0.3)',
                             boxShadow: '0 4px 20px rgba(198,167,94,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
                             background: '#FAF8F3',

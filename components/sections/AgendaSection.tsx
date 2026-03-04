@@ -31,14 +31,14 @@ export function AgendaSection() {
             className="pt-20 pb-20"
         >
             <div
-                className="w-full rounded-3xl px-8 md:px-14 py-16"
+                className="w-full rounded-3xl px-5 md:px-14 py-10 md:py-16"
                 style={{
                     background: 'rgba(250,248,243,0.85)',
                     border: '1px solid rgba(198,167,94,0.28)',
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 40px rgba(198,167,94,0.08)',
                 }}
             >
-                <div className="text-center mb-20">
+                <div className="text-center mb-10 md:mb-20">
                     <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#C6A75E' }}>
                         Timeline
                     </p>

@@ -30,7 +30,7 @@ export function SectionWrapper({
                 delay,
             }}
             className={cn(
-                'relative w-full py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col',
+                'relative w-full py-16 md:py-20 px-4 md:px-12 max-w-7xl mx-auto flex flex-col',
                 className
             )}
             {...(rest as object)}

@@ -148,7 +148,7 @@ export function HeroSection() {
                     </h2>
 
                     <p
-                        className="font-sans font-light text-lg md:text-xl max-w-xl mx-auto mb-16 leading-relaxed"
+                        className="font-sans font-light text-base md:text-xl max-w-xl mx-auto mb-10 md:mb-16 leading-relaxed"
                         style={{ color: '#888888' }}
                     >
                         Mari bersilaturahmi dalam keindahan kebersamaan
@@ -166,7 +166,7 @@ export function HeroSection() {
                     transition={{ duration: 1, delay: 0.8, ease: [0.25, 1, 0.5, 1] }}
                     className="w-full max-w-md"
                 >
-                    <Card variant="glass" className="w-full px-10 py-10 flex flex-col gap-6 items-center relative overflow-hidden">
+                    <Card variant="glass" className="w-full px-6 py-8 md:px-10 md:py-10 flex flex-col gap-5 md:gap-6 items-center relative overflow-hidden">
                         {/* Shimmer sweep */}
                         <motion.div
                             className="absolute inset-0 pointer-events-none"

@@ -18,7 +18,7 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
 
     return (
         <div
-            className="fixed inset-0 z-50 flex flex-col items-center justify-start overflow-hidden select-none"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden select-none"
             style={{ background: '#F6F1E8' }}
         >
             {/* ── Islamic geometric background pattern ── */}
@@ -74,7 +74,7 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
 
             {/* ── Main content wrapper (zoom out on open) ── */}
             <motion.div
-                className="relative z-10 w-full flex flex-col items-center"
+                className="relative z-10 w-full flex flex-col items-center pb-8"
                 animate={
                     phase === 'opening'
                         ? { scale: 1.05, opacity: 0 }
@@ -85,7 +85,7 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
                 {/* ─────────────────────────────────────────
             TOP TEXT HIERARCHY
         ───────────────────────────────────────── */}
-                <div className="flex flex-col items-center text-center mt-10 md:mt-14 px-6">
+                <div className="flex flex-col items-center text-center mt-6 md:mt-14 px-6">
                     {/* Eyebrow */}
                     <motion.div
                         initial={{ opacity: 0, y: 8 }}
@@ -142,8 +142,8 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1.0, ease: [0.25, 1, 0.5, 1] }}
-                    className="relative mt-8 md:mt-10 mx-auto"
-                    style={{ width: 'min(380px, 90vw)' }}
+                    className="relative mt-4 md:mt-10 mx-auto"
+                    style={{ width: 'min(300px, 82vw)' }}
                 >
                     {/* Warm glow behind gate */}
                     <div
@@ -405,7 +405,7 @@ export function OpeningScreen({ onOpen }: OpeningScreenProps) {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.1, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-                    className="flex flex-col items-center text-center mt-7 mb-10 px-6 gap-6"
+                    className="flex flex-col items-center text-center mt-4 md:mt-7 mb-6 md:mb-10 px-6 gap-4 md:gap-6"
                 >
                     {/* Guest Name card */}
                     <div

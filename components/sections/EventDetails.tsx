@@ -40,7 +40,7 @@ export function EventDetails() {
             className="pt-20 pb-20"
         >
             <div
-                className="w-full rounded-3xl px-8 md:px-14 py-16"
+                className="w-full rounded-3xl px-5 md:px-14 py-10 md:py-16"
                 style={{
                     background: 'rgba(250,248,243,0.85)',
                     border: '1px solid rgba(198,167,94,0.28)',
@@ -48,7 +48,7 @@ export function EventDetails() {
                 }}
             >
                 {/* Section header */}
-                <div className="text-center mb-20">
+                <div className="text-center mb-10 md:mb-20">
                     <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: '#C6A75E' }}>
                         Informasi Acara
                     </p>
@@ -74,13 +74,13 @@ export function EventDetails() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     {/* Countdown */}
-                    <Card variant="elevated" className="flex flex-col items-center p-10 text-center">
+                    <Card variant="elevated" className="flex flex-col items-center p-6 md:p-10 text-center">
                         <p className="text-xs tracking-[0.25em] uppercase mb-2" style={{ color: '#C6A75E' }}>Hitung Mundur</p>
-                        <h3 className="font-serif text-2xl mb-10" style={{ color: '#2C2C2C' }}>
+                        <h3 className="font-serif text-2xl mb-5 md:mb-10" style={{ color: '#2C2C2C' }}>
                             Menuju 18 Maret 2026
                         </h3>
 
-                        <div className="flex gap-3 sm:gap-5 justify-center w-full mb-10">
+                        <div className="flex gap-3 sm:gap-5 justify-center w-full mb-5 md:mb-10">
                             {blocks.map((block, i) => (
                                 <div key={i} className="flex flex-col items-center">
                                     <div
@@ -118,7 +118,7 @@ export function EventDetails() {
                     </Card>
 
                     {/* Location */}
-                    <Card variant="elevated" className="flex flex-col items-center p-10 text-center">
+                    <Card variant="elevated" className="flex flex-col items-center p-6 md:p-10 text-center">
                         <p className="text-xs tracking-[0.25em] uppercase mb-2" style={{ color: '#C6A75E' }}>Tempat Acara</p>
                         <h3 className="font-serif text-2xl mb-2" style={{ color: '#2C2C2C' }}>
                             Indekos Pojok D&apos;Wiga

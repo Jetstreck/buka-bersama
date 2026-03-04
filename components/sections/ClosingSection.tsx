@@ -12,7 +12,7 @@ export function ClosingSection() {
             className="pt-20 pb-28"
         >
             <div
-                className="w-full rounded-3xl px-8 md:px-16 py-16"
+                className="w-full rounded-3xl px-5 md:px-16 py-10 md:py-16"
                 style={{
                     background: 'rgba(250,248,243,0.85)',
                     border: '1px solid rgba(198,167,94,0.28)',
@@ -50,7 +50,7 @@ export function ClosingSection() {
                     transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
                     className="w-full max-w-lg mx-auto"
                 >
-                    <Card variant="elevated" className="p-10 md:p-12 relative overflow-hidden">
+                    <Card variant="elevated" className="p-6 md:p-10 lg:p-12 relative overflow-hidden">
                         {/* Corner ornaments */}
                         {(['tl', 'tr', 'bl', 'br'] as const).map((c) => (
                             <div
@@ -148,7 +148,7 @@ export function ClosingSection() {
                 </motion.div>
 
                 {/* Footer closing */}
-                <div className="mt-24 text-center px-4">
+                <div className="mt-12 md:mt-24 text-center px-4">
                     <div className="divider-gold w-16 mx-auto mb-8" />
                     <p className="font-serif text-xl italic mb-3" style={{ color: '#2C2C2C' }}>
                         Barakallahu lana wa lakum
