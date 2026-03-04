@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Soft subtle glow -->
+  <circle cx="50" cy="50" r="48" fill="#F6F1E8" />
+  
+  <!-- Elegant crescent moon -->
+  <path d="M56 22 A30 30 0 0 0 56 78 A34 34 0 1 1 56 22 Z" fill="url(#goldGrad)" transform="rotate(-15 50 50)" />
+  
+  <!-- Small 8-pointed star -->
+  <g transform="translate(68, 38) scale(0.6)">
+    <path d="M 0,-12 L 3,-3 L 12,0 L 3,3 L 0,12 L -3,3 L -12,0 L -3,-3 Z" fill="#C6A75E" />
+    <path d="M 0,-12 L 3,-3 L 12,0 L 3,3 L 0,12 L -3,3 L -12,0 L -3,-3 Z" fill="#C6A75E" transform="rotate(45)" />
+    <circle cx="0" cy="0" r="2" fill="#F6F1E8" />
+  </g>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A6D32" />
+      <stop offset="40%" stop-color="#C6A75E" />
+      <stop offset="60%" stop-color="#E8D49A" />
+      <stop offset="100%" stop-color="#8A6D32" />
+    </linearGradient>
+  </defs>
+</svg>
