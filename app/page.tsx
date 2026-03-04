@@ -1,65 +1,118 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { OpeningScreen } from '@/components/sections/OpeningScreen';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { EventDetails } from '@/components/sections/EventDetails';
+import { GallerySection } from '@/components/sections/GallerySection';
+import { AgendaSection } from '@/components/sections/AgendaSection';
+import { QuoteSection } from '@/components/sections/QuoteSection';
+import { ClosingSection } from '@/components/sections/ClosingSection';
+import { Volume2, VolumeX } from 'lucide-react';
 
 export default function Home() {
+  const [isOpened, setIsOpened] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Fade-in audio when gate opens
+  useEffect(() => {
+    if (!isOpened) return;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0;
+    audio.loop = true;
+
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked — silently ignore, user already interacted
+      });
+    }
+
+    // Gradually fade in volume over 3 seconds
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.15) {
+        vol = Math.min(vol + 0.005, 0.15);
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 80);
+
+    return () => clearInterval(fade);
+  }, [isOpened]);
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.muted = !audio.muted;
+    setIsMuted(!isMuted);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="relative min-h-screen font-sans" style={{ background: '#F6F1E8' }}>
+      {/* Background audio — plays after gate opens */}
+      {/* Replace /audio/backsound.mp3 with your preferred audio file */}
+      <audio ref={audioRef} src="/audio/Opick - Ramadhan Tiba  Official Video.mp3" preload="auto" />
+
+      {/* Mute/Unmute button — visible only after opening */}
+      <AnimatePresence>
+        {isOpened && (
+          <motion.button
+            key="audio-btn"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+            onClick={toggleMute}
+            className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+            style={{
+              background: 'rgba(250,248,243,0.85)',
+              border: '1px solid rgba(198,167,94,0.4)',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 4px 20px rgba(198,167,94,0.15)',
+            }}
+            title={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {isMuted
+              ? <VolumeX className="w-4 h-4" style={{ color: '#C6A75E' }} />
+              : <Volume2 className="w-4 h-4" style={{ color: '#C6A75E' }} />
+            }
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Opening Screen */}
+      <AnimatePresence>
+        {!isOpened && (
+          <motion.div
+            key="opening-screen"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
+            className="fixed inset-0 z-50 pointer-events-auto"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <OpeningScreen onOpen={() => setIsOpened(true)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Content */}
+      <div
+        className={`transition-opacity duration-1000 ${isOpened ? 'opacity-100' : 'opacity-0 h-screen overflow-hidden pointer-events-none'
+          }`}
+      >
+        <HeroSection />
+        <EventDetails />
+        <GallerySection />
+        <AgendaSection />
+        <QuoteSection />
+        <ClosingSection />
+      </div>
+    </main>
   );
 }
